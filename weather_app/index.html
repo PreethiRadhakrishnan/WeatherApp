@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+   <html>
+   <head>
+     <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+     <meta charset="utf-8">
+     <title>Weather App</title>
+     <link rel="stylesheet" href="css/style.css">
+     <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+		<!-- Loading main css file -->
+		<link rel="stylesheet" href="style.css">
+
+     <script>
+       function displayParsedData(data){
+         text = '<h1><center>'+ data.city.name + '</center></h1><br/>';
+         text1 ='<h3>Day 1</h3>'
+         text1 += '<b>Mininum Temperature: </b>' + data.list[0].temp.min + ' F<br/>';
+         text1 += '<b>Maximum Temperature: </b>' + data.list[0].temp.max + ' F<br/>';
+         text1 += '<b>Weather Conditions: </b>' + data.list[0].weather[0].description + '<br/>';
+         text2 ='<h3>Day 2</h3>'
+         text2 += '<b>Mininum Temperature: </b>' + data.list[1].temp.min + ' F<br/>';
+         text2 += '<b>Maximum Temperature: </b>' + data.list[1].temp.max + ' F<br/>';
+         text2 += '<b>Weather Conditions: </b>' + data.list[1].weather[0].description + '<br/>';
+         text3 ='<h3>Day 3</h3>'
+         text3 += '<b>Mininum Temperature: </b>' + data.list[2].temp.min + ' F<br/>';
+         text3 += '<b>Maximum Temperature: </b>' + data.list[2].temp.max + ' F<br/>';
+         text3 += '<b>Weather Conditions: </b>' + data.list[2].weather[0].description + '<br/>';
+         text4 ='<h3>Day 4</h3>'
+         text4 += '<b>Mininum Temperature: </b>' + data.list[3].temp.min + ' F<br/>';
+         text4 += '<b>Maximum Temperature: </b>' + data.list[3].temp.max + ' F<br/>';
+         text4 += '<b>Weather Conditions: </b>' + data.list[3].weather[0].description + '<br/>';
+         text5 ='<h3>Day 5</h3>'
+         text5 += '<b>Mininum Temperature: </b>' + data.list[4].temp.min + ' F<br/>';
+         text5 += '<b>Maximum Temperature: </b>' + data.list[4].temp.max + ' F<br/>';
+         text5 += '<b>Weather Conditions: </b>' + data.list[4].weather[0].description + '<br/>';
+         $('#city').append(text);
+         $('#d1').append(text1);
+         $('#d2').append(text2);
+         $('#d3').append(text3);
+         $('#d4').append(text4);
+         $('#d5').append(text5);
+
+       }
+     </script>
+
+
+
+     <script>
+       function Jdata() {
+         $.getJSON('http://api.openweathermap.org/data/2.5/forecast/daily?lat=-16.92&lon=145.77&cnt=5&&APPID=a51d3e55722088b5eba0a14c0ad7c732', function(data) {
+             displayParsedData(data);
+
+           })
+        //  .done(function() {
+        //    alert( "second success" );
+        //  })
+        //  .fail(function() {
+        //    alert( "error" );
+        //  });
+
+       }
+      //  $.getJSON('http://api.openweathermap.org/data/2.5/forecast/daily?lat=-16.92&lon=145.77&cnt=5&&APPID=a51d3e55722088b5eba0a14c0ad7c732', function(data) { console.log(JSON.stringify(data, null, 2)); });
+     </script>
+
+
+   </head>
+   <body onload="Jdata()">
+     <div class="site-content">
+				<div class="site-header">
+					<div class="container clearfix">
+						<header class="clearfix">
+						<a href="index.html" class="branding">
+							<img src="images/logo.png" alt="" class="logo">
+							<div class="logo-type">
+								<h1 class="site-title">Weather</h1>
+								<small class="site-description">Weather or not</small>
+							</div>
+						</a>
+
+						<!-- Default snippet for navigation -->
+						<div class="main-navigation">
+							<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+							<ul class="menu">
+								<li class="menu-item current-menu-item"><a href="index.html">Home</a></li>
+								<li class="menu-item"><a href="#">About</a></li>
+								<li class="menu-item"><a href="#">Contact</a></li>
+							</ul> <!-- .menu -->
+						</div> <!-- .main-navigation -->
+
+						<div class="mobile-navigation"></div>
+					</header>
+					</div>
+				</div> <!-- .site-header -->
+			<div class="hero">
+
+			</div>
+			<div class="forecast-table">
+				<div class="container">
+					<div class="forecast-container">
+						<div class="today forecast">
+							<div class="forecast-content">
+								<div id="city"></div>
+
+							</div>
+						</div>
+						<div class="forecast">
+
+							<div class="forecast-content">
+
+								<div id="d1"></div>
+							</div>
+						</div>
+						<div class="forecast">
+
+							<div class="forecast-content">
+
+                <div id="d2"></div>
+							</div>
+						</div>
+						<div class="forecast">
+
+							<div class="forecast-content">
+
+                <div id="d3"></div>
+							</div>
+						</div>
+						<div class="forecast">
+
+							<div class="forecast-content">
+
+                <div id="d4"></div>
+							</div>
+						</div>
+						<div class="forecast">
+
+							<div class="forecast-content">
+
+                <div id="d5"></div>
+							</div>
+						</div>
+    			</div>
+				</div>
+			</div>
+			<main class="main-content">
+
+
+
+
+
+			</main> <!-- .main-content -->
+
+			<footer class="site-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8">
+							<form action="#" class="subscribe-form">
+								<input type="text" placeholder="Enter your email to subscribe...">
+								<input type="submit" value="Subscribe">
+							</form>
+						</div>
+						<div class="col-md-3 col-md-offset-1">
+							<div class="social-links">
+								<a href="#"><i class="fa fa-facebook"></i></a>
+								<a href="#"><i class="fa fa-twitter"></i></a>
+								<a href="#"><i class="fa fa-google-plus"></i></a>
+								<a href="#"><i class="fa fa-pinterest"></i></a>
+							</div>
+						</div>
+					</div>
+
+					<p class="colophon">Copyright 2016 Weather. Designed by Preethi. All rights reserved</p>
+				</div>
+			</footer> <!-- .site-footer -->
+		</div>
+
+   </body>
+   </html>
